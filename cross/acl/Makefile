@@ -16,8 +16,10 @@ LICENSE  = GPLv2
 INSTALL_TARGET = myInstall
 GNU_CONFIGURE = 1
 
+STAGING_INSTALL_PREFIX := $(INSTALL_DIR)
+
 include ../../mk/spksrc.cross-cc.mk
 
 .PHONY: myInstall
 myInstall:
-	$(RUN) $(MAKE) DIST_ROOT=$(INSTALL_DIR) install-lib install-dev
+	$(RUN) $(MAKE) install install-dev install-lib DESTDIR=$(INSTALL_DIR) prefix=$(INSTALL_PREFIX)

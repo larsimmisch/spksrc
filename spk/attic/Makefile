@@ -1,11 +1,14 @@
 SPK_NAME = attic
 SPK_VERS = 0.16
-SPK_REV = 2
+SPK_REV = 1
 SPK_ICON = src/Backup-icon.png
 
-BUILD_DEPENDS = cross/python3 cross/setuptools cross/pip cross/wheel cross/acl cross/$(SPK_NAME)
+BUILD_DEPENDS = cross/python3 cross/setuptools cross/pip cross/wheel cross/acl 
+BUILD_DEPENDS += cross/$(SPK_NAME)
 WHEELS = $(SPK_NAME)==$(SPK_VERS)
+# WHEELS = src/requirements.txt
 PIP = pip3
+# DEPENDS = cross/acl
 SPK_DEPENDS = "python3>=3.4.1-4"
 
 MAINTAINER = Lars Immisch

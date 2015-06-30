@@ -1,5 +1,5 @@
---- setup.py.orig       2015-05-29 13:44:00.000000000 +0200
-+++ setup.py            2015-05-29 13:44:45.000000000 +0200
+--- setup.py.orig	2015-06-11 09:20:50.000000000 +0200
++++ setup.py	2015-06-25 01:12:54.000000000 +0200
 @@ -56,26 +56,6 @@
      if not all(os.path.exists(path) for path in [crypto_source, chunker_source, hashindex_source, platform_linux_source, platform_freebsd_source]):
          raise ImportError('The GIT version of Attic needs Cython. Install Cython or use a released version')
@@ -27,7 +27,7 @@
  with open('README.rst', 'r') as fd:
      long_description = fd.read()
  
-@@ -83,7 +63,7 @@
+@@ -83,12 +63,12 @@
  cmdclass.update({'build_ext': build_ext, 'sdist': Sdist})
  
  ext_modules = [
@@ -36,3 +36,9 @@
      Extension('attic.chunker', [chunker_source]),
      Extension('attic.hashindex', [hashindex_source])
  ]
+ if sys.platform.startswith('linux'):
+-    ext_modules.append(Extension('attic.platform_linux', [platform_linux_source], libraries=['acl']))
++    ext_modules.append(Extension('attic.platform_linux', [platform_linux_source], extra_objects=['../install/usr/local/attic/libexec/libacl.a']))
+ elif sys.platform.startswith('freebsd'):
+     ext_modules.append(Extension('attic.platform_freebsd', [platform_freebsd_source]))
+ elif sys.platform == 'darwin':
