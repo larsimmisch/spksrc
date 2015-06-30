@@ -27,10 +27,8 @@ postinst ()
     ${INSTALL_DIR}/env/bin/pip3 install --use-wheel --no-deps --no-index -U --force-reinstall -f ${INSTALL_DIR}/share/wheelhouse -r ${INSTALL_DIR}/share/wheelhouse/requirements.txt > /dev/null 2>&1
 
     # Add symlink
-    mkdir -p /usr/local/bin
-    ln -s ${INSTALL_DIR}/env/bin/attic /usr/local/bin/attic
-
-    exit 0
+    mkdir -p /usr/bin
+    ln -s ${INSTALL_DIR}/env/bin/attic /usr/bin/attic
 
     exit 0
 }
@@ -46,7 +44,7 @@ postuninst ()
 
     # Remove link
     rm -f ${INSTALL_DIR}
-    rm -f /usr/local/bin/attic
+    rm -f /usr/bin/attic
 
     exit 0
 }
