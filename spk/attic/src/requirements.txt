@@ -1,0 +1,2 @@
+attic==0.16
+msgpack-python==0.4.6

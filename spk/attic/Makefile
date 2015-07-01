@@ -4,9 +4,8 @@ SPK_REV = 1
 SPK_ICON = src/Backup-icon.png
 
 BUILD_DEPENDS = cross/python3 cross/setuptools cross/pip cross/wheel cross/acl 
-BUILD_DEPENDS += cross/$(SPK_NAME)
-WHEELS = $(SPK_NAME)==$(SPK_VERS)
-# WHEELS = src/requirements.txt
+BUILD_DEPENDS += cross/msgpack-python cross/$(SPK_NAME)
+WHEELS = src/requirements.txt
 PIP = pip3
 SPK_DEPENDS = "python3>=3.4.1-4"
 
@@ -16,7 +15,7 @@ RELOAD_UI = yes
 DISPLAY_NAME = Attic
 CHANGELOG = Initial version 0.16
 
-# Copied from homeassistant
+# To be on the safe side - copied from homeassistant
 UNSUPPORTED_ARCHS = powerpc ppc824x
 
 HOMEPAGE = https://attic-backup.org/

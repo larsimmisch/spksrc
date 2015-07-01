@@ -26,6 +26,8 @@ postinst ()
     # Install the wheels
     ${INSTALL_DIR}/env/bin/pip3 install --use-wheel --no-deps --no-index -U --force-reinstall -f ${INSTALL_DIR}/share/wheelhouse -r ${INSTALL_DIR}/share/wheelhouse/requirements.txt > /dev/null 2>&1
 
+    sed -i -e "s|${INSTALL_DIR}/bin/python|${INSTALL_DIR}/env/bin/python|g" ${INSTALL_DIR}/env/bin/attic
+
     # Add symlink
     mkdir -p /usr/bin
     ln -s ${INSTALL_DIR}/env/bin/attic /usr/bin/attic
